@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Escape Room</title>
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: #000000;
+    overflow: hidden;
+    animation: fondoCambio 10s linear infinite;
+}
+
+@keyframes fondoCambio {
+    0% { background-color: #300000; }
+    25% { background-color: #000c00; }
+    50% { background-color: #001030; }
+    75% { background-color: #301200; }
+    100% { background-color: #300000; }
+}
+
+.container {
+    text-align: center;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    animation: caer 4s ease-out forwards;
+}
+
+@keyframes caer {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+
+.subtitulo {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #d0cece;
+    opacity: 0;
+    animation: fade 3s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+    padding: 13px 25px;
+    font-size: 1.3rem;
+    background-color: #007bff;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    animation: respirar 2s infinite ease-in-out;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes respirar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.btn:hover {
+    background-color: #b32d00;
+    transform: scale(1.2);
+    animation-play-state: paused;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="titulo">Escape Room</h1>
+    <p class="subtitulo">¿Podrás salir?</p>
+    <button class="btn" id="btnEntrar">Entrar</button>
+</div>
+
+<script>
+const subtitulo = document.querySelector('.subtitulo');
+const boton = document.getElementById('btnEntrar');
+
+subtitulo.addEventListener('animationend', () => {
+    setTimeout(() => {
+        boton.style.opacity = '1';
+        boton.style.pointerEvents = 'auto';
+    }, 1000);
+});
+</script>
+</body>
+</html>
